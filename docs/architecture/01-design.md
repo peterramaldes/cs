@@ -38,7 +38,7 @@ classDiagram
     Cargo -- DeliveryHistory
     HandlingEvent "*" --> "1" Cargo
     DeliveryHistory "1" --> "*" HandlingEvent
-    DeliverySpecification "1" --> "1" Location : destination
+    DeliverySpecification -- Location : destination
     CarrierMovement "1" --> "1" Location : from
     CarrierMovement "1" --> "1" Location : to
     HandlingEvent "*" --> "0..1" CarrierMovement

@@ -3,24 +3,45 @@
 ## Overview
 
 ```mermaid
-flowchart LR
-    Customer(Customer<br/>customerId<br/>name)
-    Cargo(Cargo<br/>trackingId)
-    DeliveryHistory(DeliveryHistory)
-    DeliverySpecification(DeliverySpecification<br/>arrivalTime)
-    HandlingEvent(HandlingEvent<br/>completionTime<br/>type)
-    CarrierMovement(CarrierMovement<br/>scheduleId)
-    Location(Location<br/>portCode)
+classDiagram
+    class Customer {
+        customerId
+        name
+    }
 
-    Cargo -->|1..*| Customer
-    Cargo -->|goal| DeliverySpecification
-    Cargo -.-> DeliveryHistory
-    HandlingEvent -->|1| Cargo
-    DeliveryHistory -->|1..*| HandlingEvent
-    DeliverySpecification -->|destination| Location
-    CarrierMovement -->|from| Location
-    CarrierMovement -->|to| Location
-    HandlingEvent -->|0..1| CarrierMovement
+    class Cargo {
+        trackingId
+    }
+
+    class DeliveryHistory {
+    }
+
+    class DeliverySpecification {
+        arrivalTime
+    }
+
+    class HandlingEvent {
+        completionTime
+        type
+    }
+
+    class CarrierMovement {
+        scheduleId
+    }
+
+    class Location {
+        portCode
+    }
+
+    Cargo "1" --> "*" Customer
+    Cargo --> DeliverySpecification : goal
+    Cargo -- DeliveryHistory
+    HandlingEvent "*" --> "1" Cargo
+    DeliveryHistory "1" --> "*" HandlingEvent
+    DeliverySpecification -- Location : destination
+    CarrierMovement "1" --> "1" Location : from
+    CarrierMovement "1" --> "1" Location : to
+    HandlingEvent "*" --> "0..1" CarrierMovement
 ```
 
 ## Basic Features

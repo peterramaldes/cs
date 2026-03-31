@@ -33,15 +33,14 @@ classDiagram
         portCode
     }
 
-    Customer "1" -- "*" Cargo
-    Cargo "1" -- "*" DeliveryHistory
-    Cargo "1" -- "*" DeliverySpecification : goal
-    Cargo "1" -- "*" HandlingEvent : handled
-    DeliveryHistory "1" -- "*" HandlingEvent
-    HandlingEvent "*" -- "0..1" CarrierMovement
-    HandlingEvent -- Location
-    CarrierMovement -- Location : from
-    CarrierMovement -- Location : to
+    Cargo --> Customer : books
+    HandlingEvent --> Cargo
+    HandlingEvent --> DeliveryHistory
+    Cargo --> DeliverySpecification : goal
+    CarrierMovement --> Location : from
+    CarrierMovement --> Location : to
+    HandlingEvent --> CarrierMovement
+    HandlingEvent --> Location
 ```
 
 ## Basic Features

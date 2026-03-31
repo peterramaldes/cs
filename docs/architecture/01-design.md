@@ -5,32 +5,32 @@
 ```mermaid
 classDiagram
     class Customer {
-        +customerId: CustomerId
-        +name: String
+        +customerId
+        +name
     }
 
     class Cargo {
-        +trackingId: TrackingId
+        +trackingId
     }
 
     class DeliveryHistory {
     }
 
     class DeliverySpecification {
-        +arrivalTime: Date
+        +arrivalTime
     }
 
     class HandlingEvent {
-        +completionTime: Date
-        +type: String
+        +completionTime
+        +type
     }
 
     class CarrierMovement {
-        +scheduleId: ScheduleId
+        +scheduleId
     }
 
     class Location {
-        +portCode: String
+        +portCode
     }
 
     Customer -- Cargo : books

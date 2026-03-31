@@ -33,6 +33,27 @@ classDiagram
         portCode
     }
 
+    class CustomerRepository {
+        +findByCustomerId(String)
+        +findByName(String)
+        +findByCargoTrackingId(String)
+    }
+
+    class CargoRepository {
+        +findByTrackingId(String)
+        +findByCustomerId(String)
+    }
+
+    class LocationRepository {
+        +findByPortCode(String)
+        +findByCityName(String)
+    }
+
+    class CarrierMovementRepository {
+        +findByScheduleId(String)
+        +findByFromTo(Location, Location)
+    }
+
     Cargo "1" --> "*" Customer
     Cargo --> DeliverySpecification : goal
     Cargo -- DeliveryHistory
@@ -42,6 +63,10 @@ classDiagram
     CarrierMovement "1" --> "1" Location : from
     CarrierMovement "1" --> "1" Location : to
     HandlingEvent "*" --> "0..1" CarrierMovement
+    CustomerRepository "1" --> "*" Customer
+    CargoRepository "1" --> "*" Cargo
+    LocationRepository "1" --> "*" Location
+    CarrierMovementRepository "1" --> "*" CarrierMovement
 ```
 
 ## Basic Features
@@ -162,4 +187,21 @@ The *Delivery Specification* is a VALUE OBJECT, so there are no complications fr
 The *Handling Event* should be the root of its own AGGREGATE. The activity for handling the Cargo has some meaning even when considered apart from the Cargo itself. It can be queried to find all the operations to load and prepare for a particular *Carrier Movement*.
 
 - **Aggregate Root:** HandlingEvent
+
+## Selecting Repositories
+
+There are five ENTITIES in the design that are roots of AGGREGATES, so we can limit out consideration to these, since none of the other objects is allowed to have REPOSITORIES.
+
+To decide which of these candidates should actually have a REPOSITORY, we must go back to the application requirements. In order to take a booking through the *Booking Application*, the user need to select *Customer(s)* playing the various roles (shipper, receiver, and so on). So we need a *Customer Repository*. We also need to find a *Location* to specify as the destination for the *Cargo*, so we create a *Location Repository*.
+
+The *Activity Logging Application* needs to allow the user to look up the *Carrier Movement* that a *Cargo* is being loaded onto, so we need a *Carrier Movement Repository*. This user must also tell the system which *Cargo* has been loaded, so we need a *Cargo Repository*.
+
+For now there is no *Handling Event Repository*, because we decided to implement the association with *Delivery History* as a collection in the first iteration, and we have no application requirement to find out what has been loaded onto a *Carrier Movement*. Either of these reasons could change; if they did, then we would add a REPOSITORY.
+
+### Repositories
+
+| CustomerRepository | Customer | findByCustomerId, findByName, findByCargoTrackingId |
+| CargoRepository | Cargo | findByTrackingId, findByCustomerId |
+| LocationRepository | Location | findByPortCode, findByCityName |
+| CarrierMovementRepository | CarrierMovement | findByScheduleId, findByFromTo |
 

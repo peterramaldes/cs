@@ -54,30 +54,28 @@ classDiagram
         +findByFromTo(Location, Location)
     }
 
-    %% Aggregate Roots styling
-    class Customer {
-        <<root>>
-    }
-    class Location {
-        <<root>>
-    }
-    class CarrierMovement {
-        <<root>>
-    }
-    class Cargo {
-        <<root>>
-    }
-    class HandlingEvent {
-        <<root>>
-    }
+    %% Cargo Aggregate (blue)
+    style Cargo fill:#cce5ff,stroke:#0000ff,stroke-width:2px
+    style DeliveryHistory fill:#cce5ff,stroke:#0000ff,stroke-width:1px
+    style DeliverySpecification fill:#cce5ff,stroke:#0000ff,stroke-width:1px
 
-    %% Children styling
-    class DeliveryHistory {
-        <<child>>
-    }
-    class DeliverySpecification {
-        <<child>>
-    }
+    %% Customer Aggregate (red)
+    style Customer fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+
+    %% Location Aggregate (red)
+    style Location fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+
+    %% Carrier Movement Aggregate (red)
+    style CarrierMovement fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+
+    %% Handling Event Aggregate (red)
+    style HandlingEvent fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+
+    %% Repositories (green)
+    style CustomerRepository fill:#ccffcc,stroke:#00cc00,stroke-width:2px
+    style CargoRepository fill:#ccffcc,stroke:#00cc00,stroke-width:2px
+    style LocationRepository fill:#ccffcc,stroke:#00cc00,stroke-width:2px
+    style CarrierMovementRepository fill:#ccffcc,stroke:#00cc00,stroke-width:2px
 
     Cargo "1" --> "*" Customer
     Cargo --> DeliverySpecification : goal
@@ -92,14 +90,6 @@ classDiagram
     CargoRepository "1" --> "*" Cargo
     LocationRepository "1" --> "*" Location
     CarrierMovementRepository "1" --> "*" CarrierMovement
-
-    %% Styling
-    <<root>> {
-        fill: #90EE90, stroke: #228B22, stroke-width: 2px
-    }
-    <<child>> {
-        fill: #F0E68C, stroke: #DAA520, stroke-width: 1px
-    }
 ```
 
 ## Basic Features

@@ -200,6 +200,8 @@ For now there is no *Handling Event Repository*, because we decided to implement
 
 ### Repositories
 
+| Repository | Aggregate Root | Methods |
+|------------|----------------|---------|
 | CustomerRepository | Customer | findByCustomerId, findByName, findByCargoTrackingId |
 | CargoRepository | Cargo | findByTrackingId, findByCustomerId |
 | LocationRepository | Location | findByPortCode, findByCityName |

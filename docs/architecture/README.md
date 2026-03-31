@@ -109,7 +109,7 @@ classDiagram
 
 | # | Section | Description |
 |---|---------|-------------|
-| 01 | Applications | Tracking Query, Booking Application, Incident Logging Application |
-| 02 | Entities and Value Objects | Domain entities and value objects with descriptions |
-| 03 | Aggregates | Aggregate roots and their boundaries |
-| 04 | Repositories | Repository selection and methods |
+| 01 | [Applications](01-applications.md) | Tracking Query, Booking Application, Incident Logging Application |
+| 02 | [Entities and Value Objects](02-entities-value-objects.md) | Domain entities and value objects with descriptions |
+| 03 | [Aggregates](03-aggregates.md) | Aggregate roots and their boundaries |
+| 04 | [Repositories](04-repositories.md) | Repository selection and methods |

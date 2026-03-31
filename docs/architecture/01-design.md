@@ -3,36 +3,20 @@
 ## Overview
 
 ```mermaid
-erDiagram
-    Customer {
-        string customerId
-        string name
-    }
-
-    Cargo {
-        string trackingId
-    }
-
-    DeliveryHistory {
-    }
-
-    DeliverySpecification {
-        string arrivalTime
-    }
-
-    HandlingEvent {
-        string completionTime
-        string type
-    }
-
-    CarrierMovement {
-        string scheduleId
-    }
-
-    Location {
-        string portCode
-    }
-
+flowchart LR
+    subgraph Entities
+        Customer[Customer\ncustomerId\nname]
+        Cargo[Cargo\ntrackingId]
+        DeliveryHistory[DeliveryHistory]
+        HandlingEvent[HandlingEvent\ncompletionTime\ntype]
+        CarrierMovement[CarrierMovement\nscheduleId]
+        Location[Location\nportCode]
+    end
+    
+    subgraph ValueObjects
+        DeliverySpecification[DeliverySpecification\narrivalTime]
+    end
+    
     Cargo }|..|| Customer
     Cargo ||--o{ DeliverySpecification : goal
     Cargo ||--o| DeliveryHistory

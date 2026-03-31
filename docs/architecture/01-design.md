@@ -4,28 +4,23 @@
 
 ```mermaid
 flowchart LR
-    subgraph Entities
-        Customer[Customer\ncustomerId\nname]
-        Cargo[Cargo\ntrackingId]
-        DeliveryHistory[DeliveryHistory]
-        HandlingEvent[HandlingEvent\ncompletionTime\ntype]
-        CarrierMovement[CarrierMovement\nscheduleId]
-        Location[Location\nportCode]
-    end
-    
-    subgraph ValueObjects
-        DeliverySpecification[DeliverySpecification\narrivalTime]
-    end
-    
-    Cargo }|..|| Customer
-    Cargo ||--o{ DeliverySpecification : goal
-    Cargo ||--o| DeliveryHistory
-    HandlingEvent }|..|| Cargo
-    DeliveryHistory ||--o{ HandlingEvent
-    DeliverySpecification }|..|| Location : destination
-    CarrierMovement ||--|| Location : from
-    CarrierMovement ||--|| Location : to
-    HandlingEvent }|..|| CarrierMovement
+    Customer(Customer<br/>customerId<br/>name)
+    Cargo(Cargo<br/>trackingId)
+    DeliveryHistory(DeliveryHistory)
+    DeliverySpecification(DeliverySpecification<br/>arrivalTime)
+    HandlingEvent(HandlingEvent<br/>completionTime<br/>type)
+    CarrierMovement(CarrierMovement<br/>scheduleId)
+    Location(Location<br/>portCode)
+
+    Cargo -->|1..*| Customer
+    Cargo -->|goal| DeliverySpecification
+    Cargo -.-> DeliveryHistory
+    HandlingEvent -->|1| Cargo
+    DeliveryHistory -->|1..*| HandlingEvent
+    DeliverySpecification -->|destination| Location
+    CarrierMovement -->|from| Location
+    CarrierMovement -->|to| Location
+    HandlingEvent -->|0..1| CarrierMovement
 ```
 
 ## Basic Features

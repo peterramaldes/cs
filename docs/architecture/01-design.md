@@ -54,6 +54,31 @@ classDiagram
         +findByFromTo(Location, Location)
     }
 
+    %% Aggregate Roots styling
+    class Customer {
+        <<root>>
+    }
+    class Location {
+        <<root>>
+    }
+    class CarrierMovement {
+        <<root>>
+    }
+    class Cargo {
+        <<root>>
+    }
+    class HandlingEvent {
+        <<root>>
+    }
+
+    %% Children styling
+    class DeliveryHistory {
+        <<child>>
+    }
+    class DeliverySpecification {
+        <<child>>
+    }
+
     Cargo "1" --> "*" Customer
     Cargo --> DeliverySpecification : goal
     Cargo -- DeliveryHistory
@@ -67,6 +92,14 @@ classDiagram
     CargoRepository "1" --> "*" Cargo
     LocationRepository "1" --> "*" Location
     CarrierMovementRepository "1" --> "*" CarrierMovement
+
+    %% Styling
+    <<root>> {
+        fill: #90EE90, stroke: #228B22, stroke-width: 2px
+    }
+    <<child>> {
+        fill: #F0E68C, stroke: #DAA520, stroke-width: 1px
+    }
 ```
 
 ## Basic Features

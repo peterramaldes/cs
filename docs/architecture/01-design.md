@@ -2,10 +2,45 @@
 
 ## Overview
 
-DDD Chapter 7 - Cargo Shipping System
+```mermaid
+classDiagram
+    class Customer {
+        <<Entity>>
+        +CustomerId id
+    }
 
-Domain: Shipping/Logistics
-Purpose: Learning Domain-Driven Design through Cargo Shipping domain
+    class Cargo {
+        <<Entity>>
+        +TrackingId trackingId
+    }
+
+    class DeliveryHistory {
+        <<Entity>>
+    }
+
+    class DeliverySpecification {
+        <<Value Object>>
+    }
+
+    class HandlingEvent {
+        <<Entity>>
+    }
+
+    class CarrierMovement {
+        <<Entity>>
+    }
+
+    class Location {
+        <<Entity>>
+    }
+
+    Customer --> Cargo : books
+    Cargo --> DeliveryHistory : has
+    Cargo --> DeliverySpecification : has
+    Cargo --> HandlingEvent : tracked by
+    HandlingEvent --> CarrierMovement : occurs on
+    HandlingEvent --> Location : at
+```
 
 ## Basic Features
 
@@ -87,16 +122,3 @@ Although it represents the goal of a *Cargo*, this abstraction does not depend o
 - **Type:** Value Object
 - **Note:** Does not depend on Cargo. Can be shared between Cargoes going to the same destination.
 
-## Bounded Contexts
-
-(TBD - to be defined together)
-
-## Key Aggregates
-
-(TBD - based on DDD Chapter 7)
-
-## Technology Stack
-
-- Java: 21 (LTS)
-- Build: Maven 3.9.11
-- Framework: Spring Boot 3.4.x

@@ -17,23 +17,31 @@ classDiagram
     }
 
     class DeliverySpecification {
+        +arrivalTime: Date
     }
 
     class HandlingEvent {
+        +completionTime: Date
+        +type: String
     }
 
     class CarrierMovement {
+        +scheduleId: ScheduleId
     }
 
     class Location {
+        +portCode: String
     }
 
-    Customer -- Cargo : "1" -- "*" books
-    Cargo -- DeliveryHistory
-    Cargo -- DeliverySpecification : goal
-    Cargo -- HandlingEvent
-    HandlingEvent -- CarrierMovement
+    Customer -- Cargo : books
+    Cargo "1" -- "*" DeliveryHistory
+    Cargo "1" -- "*" DeliverySpecification : destination
+    Cargo "1" -- "*" HandlingEvent : handled
+    DeliveryHistory "1" -- "*" HandlingEvent
+    HandlingEvent "*" -- "0..1" CarrierMovement
     HandlingEvent -- Location
+    CarrierMovement "1" -- "1" Location : from
+    CarrierMovement "1" -- "1" Location : to
 ```
 
 ## Basic Features

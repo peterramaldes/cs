@@ -3,45 +3,45 @@
 ## Overview
 
 ```mermaid
-classDiagram
-    class Customer {
-        customerId
-        name
+erDiagram
+    Customer {
+        string customerId
+        string name
     }
 
-    class Cargo {
-        trackingId
+    Cargo {
+        string trackingId
     }
 
-    class DeliveryHistory {
+    DeliveryHistory {
     }
 
-    class DeliverySpecification {
-        arrivalTime
+    DeliverySpecification {
+        string arrivalTime
     }
 
-    class HandlingEvent {
-        completionTime
-        type
+    HandlingEvent {
+        string completionTime
+        string type
     }
 
-    class CarrierMovement {
-        scheduleId
+    CarrierMovement {
+        string scheduleId
     }
 
-    class Location {
-        portCode
+    Location {
+        string portCode
     }
 
-    Cargo "1" --> "*" Customer
-    Cargo --> DeliverySpecification : goal
-    Cargo -- DeliveryHistory
-    HandlingEvent "*" --> "1" Cargo
-    DeliveryHistory "1" --> "*" HandlingEvent
-    DeliverySpecification -- Location : destination
-    CarrierMovement "1" --> "1" Location : from
-    CarrierMovement "1" --> "1" Location : to
-    HandlingEvent "*" --> "0..1" CarrierMovement
+    Cargo }|..|| Customer
+    Cargo ||--o{ DeliverySpecification : goal
+    Cargo ||--o| DeliveryHistory
+    HandlingEvent }|..|| Cargo
+    DeliveryHistory ||--o{ HandlingEvent
+    DeliverySpecification }|..|| Location : destination
+    CarrierMovement ||--|| Location : from
+    CarrierMovement ||--|| Location : to
+    HandlingEvent }|..|| CarrierMovement
 ```
 
 ## Basic Features

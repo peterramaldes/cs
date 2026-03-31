@@ -5,41 +5,35 @@
 ```mermaid
 classDiagram
     class Customer {
-        <<Entity>>
-        +CustomerId id
+        +customerId: CustomerId
+        +name: String
     }
 
     class Cargo {
-        <<Entity>>
-        +TrackingId trackingId
+        +trackingId: TrackingId
     }
 
     class DeliveryHistory {
-        <<Entity>>
     }
 
     class DeliverySpecification {
-        <<Value Object>>
     }
 
     class HandlingEvent {
-        <<Entity>>
     }
 
     class CarrierMovement {
-        <<Entity>>
     }
 
     class Location {
-        <<Entity>>
     }
 
-    Customer --> Cargo : books
-    Cargo --> DeliveryHistory : has
-    Cargo --> DeliverySpecification : has
-    Cargo --> HandlingEvent : tracked by
-    HandlingEvent --> CarrierMovement : occurs on
-    HandlingEvent --> Location : at
+    Customer -- Cargo : "1" -- "*" books
+    Cargo -- DeliveryHistory
+    Cargo -- DeliverySpecification : goal
+    Cargo -- HandlingEvent
+    HandlingEvent -- CarrierMovement
+    HandlingEvent -- Location
 ```
 
 ## Basic Features

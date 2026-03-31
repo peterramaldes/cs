@@ -59,17 +59,17 @@ classDiagram
     style DeliveryHistory fill:#cce5ff,stroke:#0000ff,stroke-width:1px
     style DeliverySpecification fill:#cce5ff,stroke:#0000ff,stroke-width:1px
 
-    %% Customer Aggregate (red)
-    style Customer fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+    %% Customer Aggregate (orange)
+    style Customer fill:#ffe5cc,stroke:#ff9500,stroke-width:2px
 
-    %% Location Aggregate (red)
-    style Location fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+    %% Location Aggregate (purple)
+    style Location fill:#e5ccff,stroke:#9500ff,stroke-width:2px
 
-    %% Carrier Movement Aggregate (red)
-    style CarrierMovement fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+    %% Carrier Movement Aggregate (yellow)
+    style CarrierMovement fill:#ffffcc,stroke:#cccc00,stroke-width:2px
 
-    %% Handling Event Aggregate (red)
-    style HandlingEvent fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+    %% Handling Event Aggregate (pink)
+    style HandlingEvent fill:#ffe5f2,stroke:#ff0099,stroke-width:2px
 
     %% Repositories (green)
     style CustomerRepository fill:#ccffcc,stroke:#00cc00,stroke-width:2px

@@ -9,9 +9,7 @@ classDiagram
 namespace Customer {
   class Customer
   class Contact
-  class CustomerAgreement {
-    PricingModel
-  }
+  class CustomerAgreement
 
   Customer "1" --> "*" Contact
   Customer --> CustomerAgreement
@@ -34,25 +32,10 @@ namespace Billing {
 %% Shipping Module
 %% ======================
 namespace Shipping {
-  class Cargo {
-    cargoId
-    weight
-    hazMatCode
-  }
-
-  class RouteSpecification {
-    origin
-    destination
-    customsClearance
-  }
-
+  class Cargo
+  class RouteSpecification
   class Itinerary
-  class Leg {
-    id
-    load
-    unload
-  }
-
+  class Leg
   class Location
   class TransportSchedule
   class Router

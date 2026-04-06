@@ -2,18 +2,18 @@
 
 ```mermaid
 classDiagram
-    namespace Customer {
+    namespace customer {
         class Customer
         class Contact
         class CustomerAgreement
     }
-    namespace Billing {
+    namespace billing {
         class Invoice
         class Money
         class Currency
         class PricingModel
     }
-    namespace Shipping {
+    namespace shipping {
         class Cargo
         class RouteSpecification
         class Itinerary
@@ -42,6 +42,6 @@ classDiagram
     Equipment --> EquipmentInventory
     Cargo --> Itinerary
     Cargo --> BillOfLading
-    CustomerAgreement --> Billing.PricingModel
-    CustomerAgreement --> Shipping.RouteSpecification : "may constrain"
+    customer.CustomerAgreement --> billing.PricingModel
+    customer.CustomerAgreement --> shipping.RouteSpecification : "may constrain"
 ```

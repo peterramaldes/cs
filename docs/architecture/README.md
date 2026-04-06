@@ -122,3 +122,4 @@ classDiagram
 | 02 | [Entities and Value Objects](02-entities-value-objects.md) | Domain entities and value objects with descriptions |
 | 03 | [Aggregates](03-aggregates.md) | Aggregate roots and their boundaries |
 | 04 | [Repositories](04-repositories.md) | Repository selection and methods |
+| 05 | [Modules](05-modules.md) | Customer, Billing, and Shipping modules |

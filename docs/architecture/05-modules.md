@@ -2,24 +2,12 @@
 
 ```mermaid
 graph TB
-    subgraph Customer["Customer Module"]
-        CustomerService
+    subgraph Customer["Customer"]
     end
 
-    subgraph Billing["Billing Module"]
-        InvoiceService
+    subgraph Billing["Billing"]
     end
 
-    subgraph Shipping["Shipping Module"]
-        CargoService
-        HandlingEventService
-        CarrierMovementService
-        LocationService
+    subgraph Shipping["Shipping"]
     end
-
-    CustomerService --> CargoService
-    InvoiceService --> CargoService
-    HandlingEventService --> CargoService
-    CargoService --> LocationService
-    CargoService --> CarrierMovementService
 ```

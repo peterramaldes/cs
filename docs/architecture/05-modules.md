@@ -7,12 +7,12 @@ classDiagram
 %% Customer Module
 %% ======================
 namespace Customer {
-  class Customer
+  class CustomerEntity
   class Contact
   class CustomerAgreement
 
-  Customer --> Contact
-  Customer --> CustomerAgreement
+  CustomerEntity --> Contact
+  CustomerEntity --> CustomerAgreement
 }
 
 %% ======================
@@ -45,7 +45,7 @@ namespace Shipping {
   class BillOfLading
 
   Cargo --> RouteSpecification
-  RouteSpecification --> Itinerary : "0..1"
+  RouteSpecification ..> Itinerary : "0..1"
   Itinerary --> "*" Leg
   Leg --> Location : from/to
 

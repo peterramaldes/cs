@@ -11,7 +11,7 @@ namespace Customer {
   class Contact
   class CustomerAgreement
 
-  Customer "1" --> "*" Contact
+  Customer --> Contact
   Customer --> CustomerAgreement
 }
 

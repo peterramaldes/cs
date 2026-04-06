@@ -42,6 +42,4 @@ classDiagram
     Equipment --> EquipmentInventory
     Cargo --> Itinerary
     Cargo --> BillOfLading
-    customer.CustomerAgreement --> billing.PricingModel
-    customer.CustomerAgreement --> shipping.RouteSpecification : "may constrain"
 ```

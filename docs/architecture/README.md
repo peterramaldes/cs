@@ -67,6 +67,13 @@ classDiagram
         +findByFromTo(Location, Location)
     }
 
+    class HandlingEventRepository {
+        +findByCargoIDTimeType(String, Date, String)
+        +findByCargoTrackingID(String)
+        +findByScheduleID(String)
+        +findMostRecentCargoIDType(String, String)
+    }
+
     %% Cargo Aggregate (blue)
     style Cargo fill:#cce5ff,stroke:#0000ff,stroke-width:2px
     style DeliveryHistory fill:#cce5ff,stroke:#0000ff,stroke-width:1px
@@ -89,6 +96,7 @@ classDiagram
     style CargoRepository fill:#ccffcc,stroke:#00cc00,stroke-width:2px
     style LocationRepository fill:#ccffcc,stroke:#00cc00,stroke-width:2px
     style CarrierMovementRepository fill:#ccffcc,stroke:#00cc00,stroke-width:2px
+    style HandlingEventRepository fill:#ccffcc,stroke:#00cc00,stroke-width:2px
 
     Cargo "1" --> "*" Customer
     Cargo --> DeliverySpecification : goal
@@ -103,6 +111,7 @@ classDiagram
     CargoRepository "1" --> "*" Cargo
     LocationRepository "1" --> "*" Location
     CarrierMovementRepository "1" --> "*" CarrierMovement
+    HandlingEventRepository "1" --> "*" HandlingEvent
 ```
 
 ## Sections

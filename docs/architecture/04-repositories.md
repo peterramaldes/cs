@@ -6,8 +6,6 @@ To decide which of these candidates should actually have a REPOSITORY, we must g
 
 The *Activity Logging Application* needs to allow the user to look up the *Carrier Movement* that a *Cargo* is being loaded onto, so we need a *Carrier Movement Repository*. This user must also tell the system which *Cargo* has been loaded, so we need a *Cargo Repository*.
 
-For now there is no *Handling Event Repository*, because we decided to implement the association with *Delivery History* as a collection in the first iteration, and we have no application requirement to find out what has been loaded onto a *Carrier Movement*. Either of these reasons could change; if they did, then we would add a REPOSITORY.
-
 ## Repository Methods
 
 | Repository | Aggregate Root | Methods |
@@ -16,3 +14,4 @@ For now there is no *Handling Event Repository*, because we decided to implement
 | CargoRepository | Cargo | findByTrackingId, findByCustomerId |
 | LocationRepository | Location | findByPortCode, findByCityName |
 | CarrierMovementRepository | CarrierMovement | findByScheduleId, findByFromTo |
+| HandlingEventRepository | HandlingEvent | findByCargoIDTimeType, findByCargoTrackingID, findByScheduleID, findMostRecentCargoIDType |

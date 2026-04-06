@@ -27,19 +27,19 @@ classDiagram
         class BillOfLading
     }
 
-    Customer --> CustomerAgreement
-    Customer --> Contact
-    Invoice --> Money
-    Money --> Currency
-    Cargo --> RouteSpecification
-    RouteSpecification ..> Itinerary : "0..1"
-    Itinerary --> Leg
-    Leg --> Location
-    TransportSchedule --> Leg
-    Router --> Leg
-    Itinerary --> HandlingStep
-    HandlingStep --> Equipment
-    Equipment --> EquipmentInventory
-    Cargo --> Itinerary
-    Cargo --> BillOfLading
+    Customer -- CustomerAgreement
+    Customer -- Contact
+    Invoice -- Money
+    Money -- Currency
+    Cargo -- RouteSpecification
+    RouteSpecification -- Itinerary
+    Itinerary -- Leg
+    Leg -- Location
+    TransportSchedule -- Leg
+    Router -- Leg
+    Itinerary -- HandlingStep
+    HandlingStep -- Equipment
+    Equipment -- EquipmentInventory
+    Cargo -- Itinerary
+    Cargo -- BillOfLading
 ```
